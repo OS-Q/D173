@@ -4,13 +4,6 @@ on:
   push:
     branches:
       - master
-      - github_actions
-    tags:
-      - '*'
-  pull_request:
-    branches:
-      - master
-      - github_actions
 
 env:
   UPLOAD_BUILD: true
