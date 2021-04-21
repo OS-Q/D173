@@ -141,6 +141,7 @@ jobs:
         if: steps.getgh.outputs.status == 'success' && !cancelled()
         run: |
           qio run -d examples/arduino-blink
+          echo "::set-output name=status::success"
 
       - name: Send Mail
         if: steps.rebuild.outputs.status == 'success' && !cancelled()
@@ -150,7 +151,7 @@ jobs:
           server_port: 465
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          subject: OS-Q P44 released
+          subject: OS-Q P44 package released
           to: ${{secrets.MAIL_TO}}
           from: Qitas
           cc: ${{github.event.pusher.email}}

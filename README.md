@@ -12,6 +12,6 @@
 
 ### [简介](https://github.com/OS-Q/P44/wiki)
 
-[P44](https://github.com/OS-Q/P44) for TI CC13XX 系列射频 SoC
+[P44](https://github.com/OS-Q/P44) for TI CC13XX SimpleLink系列射频 SoC
 
 ### [源圈 OS-Q (Open Source & QA) ](http://www.OS-Q.com)

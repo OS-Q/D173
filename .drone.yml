@@ -1,8 +1,8 @@
 kind: pipeline
-name: default
+name: OSQ
 
 steps:
-- name: OSQ
+- name: example
   image: python:3
   commands:
   - apt update
