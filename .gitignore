@@ -13,7 +13,6 @@ asf4/
 nxp*/
 docs/
 doc/
-*.md
 .vscode/
 __pycache__/
 *.pyc
