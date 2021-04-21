@@ -102,8 +102,27 @@ jobs:
         id: OSS
         run: |
           cp package.zip P44.zip
+          cp package.zip P44_${GITHUB_REF/refs\/tags\//}.zip
           ossutil cp ${{ env.FIRMWARE }}/P44.zip ${{ secrets.OSS_P_BUCKET }} -rf
+          ossutil cp ${{ env.FIRMWARE }}/P44_${GITHUB_REF/refs\/tags\//}.zip ${{ secrets.OSS_P_BUCKET }} -rf
           echo "::set-output name=status::success"
+
+      - name: Send Mail
+        if: steps.rebuild.outputs.status == 'success' && !cancelled()
+        uses: Qful/mail-action@master
+        with:
+          server_address:  smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: OS-Q P44 package released
+          to: ${{secrets.MAIL_TO}}
+          from: Qitas
+          cc: ${{github.event.pusher.email}}
+          content_type: text/html
+          convert_markdown: true
+          attachments: ${{ env.FIRMWARE }}log.txt
+          body: file://./qio/mail.md
 
       - name: Delet tag
         run: |
@@ -142,23 +161,6 @@ jobs:
         run: |
           qio run -d examples/arduino-blink
           echo "::set-output name=status::success"
-
-      - name: Send Mail
-        if: steps.rebuild.outputs.status == 'success' && !cancelled()
-        uses: Qful/mail-action@master
-        with:
-          server_address:  smtp.gmail.com
-          server_port: 465
-          username: ${{secrets.MAIL_USERNAME}}
-          password: ${{secrets.MAIL_PASSWORD}}
-          subject: OS-Q P44 package released
-          to: ${{secrets.MAIL_TO}}
-          from: Qitas
-          cc: ${{github.event.pusher.email}}
-          content_type: text/html
-          convert_markdown: true
-          attachments: log.txt
-          body: file://./qio/mail.md
 
       - name: Delet tag
         run: |
