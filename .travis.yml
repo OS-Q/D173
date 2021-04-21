@@ -1,20 +1,22 @@
 language: python
 python:
-  - "3.8"
-  - "3.6"
+  - "3.7"
 
 env:
-  - PLATFORMIO_PROJECT_DIR=examples/arduino-blink
-  - PLATFORMIO_PROJECT_DIR=examples/arduino-internal-libs
-  - PLATFORMIO_PROJECT_DIR=examples/libopencm3-blink
-  - PLATFORMIO_PROJECT_DIR=examples/native-blink
+  - PLATFORMIO_PROJECT_DIR="examples/pico-hello"
+  - PLATFORMIO_PROJECT_DIR="examples/UNISTD"
+  - PLATFORMIO_PROJECT_DIR="examples/pico-cmsis-dap"
 
 install:
-  - pip install -U https://github.com/platformio/platformio/archive/develop.zip
-  - platformio platform install file://.
+  - pip install -U https://github.com/OS-Q/M03/releases/latest/download/qio.zip
+  - qio platform install file://.
 
 script:
-  - platformio run -d $PLATFORMIO_PROJECT_DIR
+  - qio run -s -d $PLATFORMIO_PROJECT_DIR
 
-notifications:
-  email: false
+# notifications:
+#   email:
+#     recipients:
+#       - tang@qitas.cn
+#     on_success: never # default: change
+#     on_failure: always # default: always

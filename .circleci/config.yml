@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "System"
+          name: "QIO"
           command: |
             apt update
             apt install -y git
@@ -15,14 +15,12 @@ jobs:
           name: "Install"
           command: |
             python -m pip install --upgrade pip
-            pip install -U https://github.com/OS-Q/M03/releases/latest/download/M03.zip
-            pio platform install file://.
+            pip install -U https://github.com/OS-Q/M03/releases/latest/download/qio.zip
+            qio platform install file://.
       - run:
           name: "Build"
           command: |
-            pio run -d examples/native-blink
             pio run -d examples/arduino-blink
-            pio run -d examples/arduino-internal-libs
 
 workflows:
     version: 2

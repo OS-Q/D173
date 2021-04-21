@@ -28,7 +28,7 @@
   "frameworks": {
     "arduino": {
       "package": "framework-energia-ticc13x0",
-      "script": "builder/frameworks/energia.py"
+      "script": "extend/arduino.py"
     }
   },
   "packages": {

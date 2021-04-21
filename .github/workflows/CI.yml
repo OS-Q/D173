@@ -75,7 +75,7 @@ jobs:
       - name: Install QIO
         run: |
           python -m pip install --upgrade pip
-          pip install -U https://github.com/OS-Q/M03/releases/latest/download/M03.zip
+          pip install -U https://github.com/OS-Q/M03/releases/latest/download/qio.zip
           pio platform install file://.
 
       - name: Build examples
