@@ -1,9 +1,14 @@
 language: python
 python:
   - "3.9"
+os:
+  - linux
+
+git:
+  depth: 1
 
 env:
-  - PLATFORMIO_PROJECT_DIR="examples/arduino-blink"
+  - PLATFORMIO_PROJECT_DIR=examples/arduino-blink
 
 install:
   - pip install platformio
@@ -12,3 +17,6 @@ install:
 
 script:
   - pio run -s -d $PLATFORMIO_PROJECT_DIR
+
+notifications:
+  email: false
