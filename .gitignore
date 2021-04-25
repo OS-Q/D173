@@ -1,3 +1,4 @@
+*.db
 *.pyc
 *ICENS*
 COPY*
@@ -13,10 +14,18 @@ asf4/
 nxp*/
 docs/
 doc/
-.vscode/
 __pycache__/
-*.pyc
-/build
-*/*/.travis*
-/**/*README*
-!README.md
+*.vscode/
+*.pio/
+*.rst
+# *.md
+**/*/README*
+LICENSE*
+*.png
+*.jpg
+examples/**/*.yml
+examples/**/*.md
+**/CONTR*
+**/CHANGE*
+.gitmodules
+**/.travis.yml
